@@ -1,10 +1,16 @@
 <script setup lang="ts">
+import graph from "./Graphs.vue"
+
 import { h, reactive, ref, resolveComponent } from 'vue';
 import Crud, { defineC, defineD, defineR, defineU } from '@/lib';
 import Detail from '@/Detail.vue';
 import http from '@/http';
 import { message } from 'ant-design-vue';
 import { ToolOutlined } from '@ant-design/icons-vue';
+import StackedColumn from "./StackedColumn.vue";
+import SemiCirclePie from "./SemiCirclePie.vue";
+import CirclePie from "./CirclePie.vue";
+import ProgressChart from "./ProgressChart.vue";
 
 interface KV<T = any> {
     [k: string | number]: T;
@@ -41,7 +47,7 @@ const r = defineR({
             title: 'Book Category',
             dataIndex: 'category',
         },
-    
+
         {
             title: 'CRUD Operation',
             key: 'operation',
@@ -71,10 +77,10 @@ const c = defineC({
     formProps: { labelCol: { span: 2 } },
 
     items: () => [
-       { is: 'a-input', name: 'author', label: 'Author Name' },
+        { is: 'a-input', name: 'author', label: 'Author Name' },
         { is: 'a-input', name: 'title', label: 'Book Title' },
         { is: 'a-input', name: 'category', label: 'Book Category' },
-          ],
+    ],
 });
 
 const u = defineU({
@@ -88,8 +94,8 @@ const u = defineU({
         return data;
     },
 
-    async done(formData,row) {
-        const { data, status } = await http.put('/book/'+row[primaryKey], formData);
+    async done(formData, row) {
+        const { data, status } = await http.put('/book/' + row[primaryKey], formData);
         return [200 === status, data.msg];
     },
 
@@ -112,8 +118,8 @@ const d = defineD({
     },
 });
 
-function config(){
-  message.success('Custom button')
+function config() {
+    message.success('Custom button')
 }
 
 function getContainer() {
@@ -122,32 +128,56 @@ function getContainer() {
 </script>
 
 <template>
-    <a-config-provider  :getPopupContainer="getContainer">
+    <a-config-provider :getPopupContainer="getContainer">
         <h1 class="title" align="center">jas-crud-vue-ts</h1>
         <p align="center">
-           Basic CRUD Application  
+            Basic CRUD Application and Amchart Graphs
         </p>
 
         <div class="box" id="box">
+
             <crud v-bind="{ primaryKey, c, u, r, d }">
-                <!-- Detail -->
                 <template #one="one">
                     <Detail :data-source="one" />
                 </template>
 
                 <template #row-buttons-before>
                     <a-button type="link" @click="config">
-                      <tool-outlined/>
-                   Configuration</a-button>
+                        <tool-outlined />
+                        Configuration
+                    </a-button>
                 </template>
             </crud>
         </div>
+
+
+        <div class="box" id="box">
+            <graph />
+        </div>
+
+        <div class="box" id="box">
+            <circle-pie />
+        </div>
+
+        <div class="box" id="box">
+            <progress-chart />
+        </div>
+
+        <div class="box" id="box">
+            <stacked-column />
+        </div>
+
+        <div class="box" id="box">
+            <semi-circle-pie />
+        </div>
+
+
     </a-config-provider>
 </template>
 
 <style lang="scss">
 #app {
-    font-family:  Avenir, Helvetica, Arial, sans-serif;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

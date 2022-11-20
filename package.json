@@ -18,12 +18,14 @@
   "dependencies": {
     "5a.css": "^0.1.20",
     "@amcharts/amcharts4": "^4.10.30",
+    "@amcharts/editor4": "^4.0.3",
     "@ant-design/icons-vue": "^6.1.0",
     "ant-design-vue": "^3.2.10",
     "await-to-js": "^3.0.0",
     "be-full": "^0.1.4",
     "lodash": "^4.17.21",
     "vue": "^3.2.25",
+    "vue-class-component": "^7.2.6",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
