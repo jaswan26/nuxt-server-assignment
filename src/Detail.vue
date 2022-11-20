@@ -18,9 +18,9 @@ defineProps<{ dataSource: ResponseData }>();
    
     <a-descriptions-item label="Author">{{ dataSource.author }}</a-descriptions-item>
 
-    <a-descriptions-item label="Title">{{ dataSource.author }}</a-descriptions-item>
+    <a-descriptions-item label="Title">{{ dataSource.title }}</a-descriptions-item>
 
-    <a-descriptions-item label="Category">{{ dataSource.author }}</a-descriptions-item>
+    <a-descriptions-item label="Category">{{ dataSource.category }}</a-descriptions-item>
 
   </a-descriptions>
 </template>

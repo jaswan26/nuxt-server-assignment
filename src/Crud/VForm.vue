@@ -147,7 +147,7 @@ defineExpose({ formRef, reset, toggleItem });
         <!-- Form class component -->
         <component v-if="item.name" :is="item.is" v-bind="{
           allowClear: true,
-          placeholder: `please enter${item.label || ''}`,
+          placeholder: `Please Enter ${item.label || ''}`,
           ...item.props,
         }" v-model:[getVModelName(item)]="formData[item.name as string]">
         </component>

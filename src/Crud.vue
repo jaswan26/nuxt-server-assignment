@@ -364,7 +364,7 @@ async function exportExcelFile() {
           <a-button v-if="r.getOne" type="link" @click="showOne(record)"><eye-outlined />Check</a-button>
 
           <a-button v-if="void 0 !== u" type="link" size="small" @click="showEditForm(record)">
-            <edit-outlined />edit</a-button
+            <edit-outlined />Edit</a-button
           >
           <a-popconfirm
             v-if="void 0 !== d"
@@ -373,7 +373,7 @@ async function exportExcelFile() {
             cancel-text="Cancel"
             @confirm="remove([record[primaryKey]], record)"
           >
-            <a-button type="link" size="small"><delete-outlined />delete</a-button>
+            <a-button type="link" size="small"><delete-outlined />Delete</a-button>
           </a-popconfirm>
         </template>
       </template>

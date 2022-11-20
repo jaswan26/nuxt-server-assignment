@@ -30,20 +30,20 @@ const r = defineR({
 
     columns: [
         {
-            title: 'Name',
+            title: 'Author Name',
             dataIndex: 'author',
         },
         {
-            title: 'Title',
+            title: 'Book Title',
             dataIndex: 'title',
         },
         {
-            title: 'Category',
+            title: 'Book Category',
             dataIndex: 'category',
         },
     
         {
-            title: 'operate',
+            title: 'CRUD Operation',
             key: 'operation',
         },
     ],
@@ -71,9 +71,9 @@ const c = defineC({
     formProps: { labelCol: { span: 2 } },
 
     items: () => [
-       { is: 'a-input', name: 'author', label: 'Name' },
-        { is: 'a-input', name: 'title', label: 'Title' },
-        { is: 'a-input', name: 'category', label: 'Category' },
+       { is: 'a-input', name: 'author', label: 'Author Name' },
+        { is: 'a-input', name: 'title', label: 'Book Title' },
+        { is: 'a-input', name: 'category', label: 'Book Category' },
           ],
 });
 
@@ -123,7 +123,7 @@ function getContainer() {
 
 <template>
     <a-config-provider  :getPopupContainer="getContainer">
-        <h1 class="title" align="center">jas-crud--vue-ts</h1>
+        <h1 class="title" align="center">jas-crud-vue-ts</h1>
         <p align="center">
            Basic CRUD Application  
         </p>

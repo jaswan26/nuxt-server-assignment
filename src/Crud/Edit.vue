@@ -71,7 +71,7 @@ defineExpose({
 </script>
 
 <template>
-  <a-drawer v-model:visible="isShow" title="edit" size="large" v-bind="drawerProps">
+  <a-drawer v-model:visible="isShow" title="Edit" size="large" v-bind="drawerProps">
     <a-skeleton :loading="isLoading" active>
       <a-result v-if="errorMessage" status="500" title="error" :sub-title="errorMessage">
         <template #extra>
@@ -94,8 +94,8 @@ defineExpose({
 
     <template v-if="!isLoading && !errorMessage" #footer>
       <a-space>
-        <a-button :loading="isSubmitting" @click="reset">Repossess</a-button>
-        <a-button type="primary" :loading="isSubmitting" @click="save">Sure</a-button></a-space
+        <a-button :loading="isSubmitting" @click="reset">Reset</a-button>
+        <a-button type="primary" :loading="isSubmitting" @click="save">Update</a-button></a-space
       >
     </template>
   </a-drawer>

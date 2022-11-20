@@ -66,8 +66,8 @@ defineExpose({
   >
     <n-form ref="nFormRef" v-model="formData" :items="items" :formProps="formProps"></n-form>
     <template #footer>
-      <a-button :loading="isSubmitting" @click="reset">Repossess</a-button>
-      <a-button type="primary" :loading="isSubmitting" @click="save">Sure</a-button>
+      <a-button :loading="isSubmitting" @click="reset">Reset</a-button>
+      <a-button type="primary" :loading="isSubmitting" @click="save">Create</a-button>
     </template>
   </a-modal>
 </template>
