@@ -3,19 +3,18 @@
   </div>
 </template>
   
-<script>
+<script setup lang="ts">
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import { onMounted, ref } from "vue";
 
 am4core.useTheme(am4themes_animated);
+ 
+let chartdiv = ref <HTMLElement | string>("")
 
-
-export default {
-  name: 'HelloWorld',
-  mounted() {
-    let chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart);
-
+  onMounted(()=> {
+    let chart: am4charts.XYChart = am4core.create(chartdiv.value, am4charts.XYChart);
 
     // Add data
     chart.data = [{
@@ -51,7 +50,7 @@ export default {
     }];
 
     // Create axes
-    let yAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+    let yAxis:am4charts.CategoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
     yAxis.dataFields.category = "category";
     yAxis.renderer.grid.template.disabled = true;
     yAxis.renderer.labels.template.disabled = true;
@@ -90,7 +89,7 @@ export default {
     });
 
     // Legend
-    let legend = new am4charts.Legend();
+    let legend: am4charts.Legend = new am4charts.Legend();
     legend.parent = chart.chartContainer;
     legend.itemContainers.template.clickable = false;
     legend.itemContainers.template.focusable = false;
@@ -98,15 +97,9 @@ export default {
     legend.align = "right";
     legend.data = chart.data;
 
-    this.chart = chart;
-  },
+  })
 
-  beforeDestroy() {
-    if (this.chart) {
-      this.chart.dispose();
-    }
-  }
-}
+
 </script>
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->

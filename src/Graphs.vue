@@ -3,19 +3,19 @@
     </div>
   </template>
   
-  <script>
+  <script setup lang="ts">
   import * as am4core from "@amcharts/amcharts4/core";
   import * as am4charts from "@amcharts/amcharts4/charts";
   import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-  
-  am4core.useTheme(am4themes_animated);
-  
-  
-  export default {
-    name: 'HelloWorld',
-    mounted() {
-      let chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart);
-  
+  import { onMounted, ref } from "vue";
+
+am4core.useTheme(am4themes_animated);
+ 
+let chartdiv = ref <HTMLElement | string>("")
+
+  onMounted(()=> {
+    let chart: am4charts.XYChart = am4core.create(chartdiv.value, am4charts.XYChart);
+
       chart.paddingRight = 20;
   
       let data = [];
@@ -30,8 +30,7 @@
       let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
       dateAxis.renderer.grid.template.location = 0;
   
-      let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-      valueAxis.tooltip.disabled = true;
+      let valueAxis: am4charts.ValueAxis = chart.yAxes.push(new am4charts.ValueAxis());
       valueAxis.renderer.minWidth = 35;
   
       let series = chart.series.push(new am4charts.LineSeries());
@@ -44,16 +43,8 @@
       let scrollbarX = new am4charts.XYChartScrollbar();
       scrollbarX.series.push(series);
       chart.scrollbarX = scrollbarX;
-  
-      this.chart = chart;
-    },
-  
-    beforeDestroy() {
-      if (this.chart) {
-        this.chart.dispose();
-      }
-    }
-  }
+    
+  })
   </script>
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->

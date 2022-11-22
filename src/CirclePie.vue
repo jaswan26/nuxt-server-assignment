@@ -3,18 +3,17 @@
   </div>
 </template>
   
-<script>
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
-am4core.useTheme(am4themes_animated);
+let chartdiv4 = ref<HTMLElement | string>("")
 
+onMounted(() => {
 
-export default {
-  name: 'HelloWorld',
-  mounted() {
-    let chart = am4core.create(this.$refs.chartdiv4, am4charts.PieChart);
+  let chart: am4charts.PieChart = am4core.create(chartdiv4.value, am4charts.PieChart);
 
     chart.paddingRight = 20;
 
@@ -37,16 +36,7 @@ export default {
     series.dataFields.category = "category";
     series.dataFields.value = "value";
 
-
-    this.chart = chart;
-  },
-
-  beforeDestroy() {
-    if (this.chart) {
-      this.chart.dispose();
-    }
-  }
-}
+})
 </script>
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->
