@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import graph from "./Graphs.vue"
+import graph from "./Amcharts/Graphs.vue"
 
 import { h, reactive, ref, resolveComponent } from 'vue';
 import Crud, { defineC, defineD, defineR, defineU } from '@/lib';
@@ -7,10 +7,10 @@ import Detail from '@/Detail.vue';
 import http from '@/http';
 import { message } from 'ant-design-vue';
 import { ToolOutlined } from '@ant-design/icons-vue';
-import StackedColumn from "./StackedColumn.vue";
-import SemiCirclePie from "./SemiCirclePie.vue";
-import CirclePie from "./CirclePie.vue";
-import ProgressChart from "./ProgressChart.vue";
+import StackedColumn from "./Amcharts/StackedColumn.vue";
+import SemiCirclePie from "./Amcharts/SemiCirclePie.vue";
+import CirclePie from "./Amcharts/CirclePie.vue";
+import ProgressChart from "./Amcharts/ProgressChart.vue";
 
 interface KV<T = any> {
     [k: string | number]: T;
